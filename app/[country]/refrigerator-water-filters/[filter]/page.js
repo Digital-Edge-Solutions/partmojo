@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, Footer, Breadcrumb } from "../../../../components/ui";
 import {
-  FILTERS, bySlug, byCode, COUNTRIES, CATEGORY, AFTERMARKET, slug, priceFor,
+  FILTERS, bySlug, byCode, COUNTRIES, CATEGORY, AFTERMARKET, CONTAMINANTS, slug, priceFor,
 } from "../../../../lib/data";
 import { BASE, jsonLd, breadcrumbLd, affiliateUrl, PRODUCT_IMAGE } from "../../../../lib/site";
 
@@ -42,6 +42,11 @@ export default function FilterPage({ params }) {
   const price = priceFor(f, country);
   const cat = country === "uk" ? CATEGORY.nameUK : CATEGORY.name;
   const related = (f.related || []).map((code) => byCode[code]).filter(Boolean);
+  const myFacets = CONTAMINANTS.filter((ct) => ct.filters.includes(f.code));
+  const cmpHref = (r) => {
+    const [c1, c2] = [f.code, r.code].sort();
+    return `/${country}/compare/${byCode[c1].slug}-vs-${byCode[c2].slug}`;
+  };
 
   // ---- Entity-rich JSON-LD: Product + spare-part/consumable relationships ----
   const productLd = {
@@ -174,6 +179,46 @@ export default function FilterPage({ params }) {
                       <h3>{r.code}</h3>
                       <p className="meta">{r.brand} · {r.fits.length}+ models</p>
                     </Link>
+                  ))}
+                </div>
+                <div className="chips" style={{ marginTop: 12 }}>
+                  {related.map((r) => (
+                    <Link key={r.slug} href={cmpHref(r)} className="chip">{f.code} vs {r.code} →</Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="section" style={{ paddingTop: 8 }}>
+              <h2>Out of stock? Verified alternatives</h2>
+              <p className="lead">If the {f.code} is unavailable, these fit the exact same fridges.</p>
+              <div className="grid g2">
+                <div className="card">
+                  <h3>Identical filter, other part numbers</h3>
+                  <p className="meta">100% guaranteed fit — the same filter sold under different codes:</p>
+                  <div className="chips" style={{ marginTop: 8 }}>
+                    {f.aka.map((a) => <span key={a} className="chip">{a}</span>)}
+                  </div>
+                </div>
+                <div className="card">
+                  <h3>Certified compatible brands</h3>
+                  <p className="meta">NSF-certified aftermarket filters built for the same models, usually cheaper:</p>
+                  <div className="chips" style={{ marginTop: 8 }}>
+                    {AFTERMARKET.map((a) => (
+                      <a key={a.brand} className="chip" href={affiliateUrl({ merchant: a.brand, code: f.code, country })} rel="sponsored nofollow" target="_blank">{a.brand} ↗</a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <p className="hint" style={{ marginTop: 10 }}>Always confirm the alternative lists your fridge model before buying.</p>
+            </div>
+
+            {myFacets.length > 0 && (
+              <div className="section" style={{ paddingTop: 8 }}>
+                <h2>What it removes</h2>
+                <div className="chips">
+                  {myFacets.map((ct) => (
+                    <Link key={ct.slug} href={`/${country}/water-filters-that-remove/${ct.slug}`} className="chip">Removes {ct.label} →</Link>
                   ))}
                 </div>
               </div>

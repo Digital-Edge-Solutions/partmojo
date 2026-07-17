@@ -1,4 +1,4 @@
-import { FILTERS, MODELS, BRANDS, COUNTRIES, CATEGORY, slug } from "../lib/data";
+import { FILTERS, MODELS, BRANDS, COUNTRIES, CATEGORY, COMPARE_PAIRS, CONTAMINANTS, slug } from "../lib/data";
 import { BASE } from "../lib/site";
 
 export default function sitemap() {
@@ -16,6 +16,8 @@ export default function sitemap() {
     for (const f of FILTERS) add(`/${country}/${CATEGORY.slug}/${f.slug}`);
     for (const b of BRANDS) add(`/${country}/brands/${slug(b)}`);
     for (const m of MODELS) add(`/${country}/fits/${m.slug}`);
+    for (const p of COMPARE_PAIRS) add(`/${country}/compare/${p.slug}`);
+    for (const ct of CONTAMINANTS) add(`/${country}/water-filters-that-remove/${ct.slug}`);
   }
   return urls;
 }

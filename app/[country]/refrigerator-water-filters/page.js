@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, Footer, Breadcrumb } from "../../../components/ui";
 import SearchBox from "../../../components/SearchBox";
-import { FILTERS, MODELS, BRANDS, COUNTRIES, CATEGORY, slug, priceFor } from "../../../lib/data";
+import { FILTERS, MODELS, BRANDS, COUNTRIES, CATEGORY, CONTAMINANTS, COMPARE_PAIRS, slug, priceFor } from "../../../lib/data";
 import { jsonLd, breadcrumbLd } from "../../../lib/site";
 
 export const revalidate = 43200;
@@ -76,6 +76,30 @@ export default function CategoryHub({ params }) {
             </section>
           );
         })}
+
+        <section className="section">
+          <h2>Shop by what it removes</h2>
+          <p className="lead">Worried about a specific contaminant? Jump to the filters certified to reduce it.</p>
+          <div className="chips">
+            {CONTAMINANTS.map((ct) => (
+              <Link key={ct.slug} href={`/${country}/water-filters-that-remove/${ct.slug}`} className="chip">
+                Removes {ct.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="section">
+          <h2>Popular comparisons</h2>
+          <p className="lead">Not sure which of two similar filters you need? Compare them side by side.</p>
+          <div className="chips">
+            {COMPARE_PAIRS.slice(0, 12).map((p) => (
+              <Link key={p.slug} href={`/${country}/compare/${p.slug}`} className="chip">
+                {p.a.code} vs {p.b.code}
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section className="section">
           <h2>All fridge models we cover</h2>
