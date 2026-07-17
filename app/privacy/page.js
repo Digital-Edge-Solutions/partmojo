@@ -1,5 +1,5 @@
 import { Header, Footer } from "../../components/ui";
-import { BRAND, CONTACT_EMAIL } from "../../lib/site";
+import { BRAND } from "../../lib/site";
 
 export const metadata = {
   title: "Privacy Policy",
@@ -39,9 +39,9 @@ export default function Privacy() {
           </p>
           <h2 style={{ marginTop: 20 }}>Your rights &amp; contact</h2>
           <p className="lead">
-            If you have any questions about privacy or wish to make a data request, email us at{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. This policy may be updated from
-            time to time; the current version always lives at this page.
+            If you have any questions about privacy or wish to make a data request, please{" "}
+            <a href="/contact">contact us</a> via our form. This policy may be updated from time to
+            time; the current version always lives at this page.
           </p>
         </section>
       </main>

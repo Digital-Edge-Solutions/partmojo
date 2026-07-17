@@ -1,5 +1,6 @@
 import { Header, Footer } from "../../components/ui";
-import { BRAND, CONTACT_EMAIL } from "../../lib/site";
+import ContactForm from "../../components/ContactForm";
+import { BRAND } from "../../lib/site";
 
 export const metadata = {
   title: "Contact",
@@ -20,17 +21,11 @@ export default function Contact() {
             message and fix data issues fast.
           </p>
         </section>
-        <section className="section" style={{ paddingTop: 8, maxWidth: 720 }}>
-          <div className="card" style={{ maxWidth: 420 }}>
-            <h3>Email us</h3>
-            <p className="meta" style={{ marginBottom: 10 }}>
-              The fastest way to reach the team.
-            </p>
-            <a className="cta" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-          </div>
-          <p className="lead" style={{ marginTop: 18 }}>
-            For affiliate, partnership or press enquiries, email the same address with the subject
-            line “Partnerships”. {BRAND} is operated by Digital Edge Solutions.
+        <section className="section" style={{ paddingTop: 8 }}>
+          <ContactForm />
+          <p className="lead" style={{ marginTop: 18, maxWidth: 480 }}>
+            For affiliate, partnership or press enquiries, use the form above and add “Partnerships”
+            to your message. {BRAND} is operated by Digital Edge Solutions.
           </p>
         </section>
       </main>
