@@ -1,4 +1,5 @@
 import { FILTERS, MODELS, BRANDS, COUNTRIES, CATEGORY, COMPARE_PAIRS, CONTAMINANTS, slug } from "../lib/data";
+import { DESCALER_BRANDS } from "../lib/descaler";
 import { BASE } from "../lib/site";
 
 export default function sitemap() {
@@ -19,5 +20,8 @@ export default function sitemap() {
     for (const p of COMPARE_PAIRS) add(`/${country}/compare/${p.slug}`);
     for (const ct of CONTAMINANTS) add(`/${country}/water-filters-that-remove/${ct.slug}`);
   }
+  // UK-only descaler category
+  add("/uk/descaler");
+  for (const b of DESCALER_BRANDS) add(`/uk/descaler/${b.slug}`);
   return urls;
 }

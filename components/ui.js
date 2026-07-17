@@ -49,6 +49,8 @@ export function Footer({ country = "us" }) {
               <br />
               <Link href={`/${country}/tools/find-my-filter`}>Find my filter tool</Link>
               <br />
+              <Link href="/uk/descaler">Coffee &amp; kettle descaler (UK)</Link>
+              <br />
               <span style={{ opacity: 0.5 }}>Vacuum filters &amp; bags (soon)</span>
             </p>
           </div>
