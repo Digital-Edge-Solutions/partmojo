@@ -1,6 +1,6 @@
 import "./globals.css";
 import Script from "next/script";
-import { BASE, BRAND, PRODUCT_IMAGE } from "../lib/site";
+import { BASE, BRAND, PRODUCT_IMAGE, orgLd, jsonLd } from "../lib/site";
 
 export const metadata = {
   metadataBase: new URL(BASE),
@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgLd())} />
         {children}
         {SOVRN_KEY !== "SOVRN_KEY" && (
           <Script id="sovrn" strategy="afterInteractive">

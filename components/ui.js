@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SearchBox from "./SearchBox";
 import { BRAND, TAGLINE } from "../lib/site";
 import { COUNTRIES, CATEGORY } from "../lib/data";
 
@@ -20,6 +21,9 @@ export function Header({ country = "us" }) {
         <Link href={`/${other}`} className="flag" title={`Switch to ${otherLabel}`}>
           {cur} · switch to {otherLabel}
         </Link>
+      </div>
+      <div className="container hsearch">
+        <SearchBox country={country} compact />
       </div>
     </header>
   );

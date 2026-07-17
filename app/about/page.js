@@ -29,6 +29,17 @@ export default function About() {
             shows the part’s alternative codes, the fridges it fits, certified specifications, and
             the best-value places to buy it.
           </p>
+          <h2 style={{ marginTop: 22 }}>How we verify compatibility</h2>
+          <p className="lead">
+            Getting the fit right is the whole point, so we cross-check every part against multiple
+            sources: manufacturer cross-reference tables and manuals, retailer fitment data, and the
+            OEM's own part numbering. We publish a filter's alternative codes only where they refer
+            to the same physical part, and we flag "commonly confused" filters that fit different
+            appliances so you don't pick the wrong one. Specifications (micron rating, NSF/ANSI
+            certifications, capacity) are taken from the manufacturer's published data. If we can't
+            verify a match, we don't list it — and if we ever get one wrong, we fix it fast when you{" "}
+            <a href="/contact">tell us</a>.
+          </p>
           <h2 style={{ marginTop: 22 }}>How we make money</h2>
           <p className="lead">
             {BRAND} is reader-supported. When you buy through links on our site we may earn a small

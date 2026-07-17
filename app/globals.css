@@ -110,3 +110,9 @@ h1 .g{background:linear-gradient(135deg,#5fe6d5,#12c2b0 55%,#28d1a5);-webkit-bac
 .fld input,.fld textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--ink);font:inherit;font-size:14px;padding:11px 12px;outline:none}
 .fld input:focus,.fld textarea:focus{border-color:var(--brand)}
 .fld textarea{resize:vertical}
+.hsearch{padding-bottom:12px}
+.searchwrap.compact{margin:0;max-width:100%;position:relative}
+.searchwrap.compact .search{padding:5px;border-radius:12px}
+.searchwrap.compact input{font-size:14px;padding:9px 10px}
+.searchwrap.compact .search button{padding:9px 15px;font-size:13px}
+.searchwrap.compact .results{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:60;box-shadow:0 14px 34px rgba(0,0,0,.45)}

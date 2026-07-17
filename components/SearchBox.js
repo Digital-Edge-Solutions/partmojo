@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { FILTERS, MODELS, CATEGORY } from "../lib/data";
 
-export default function SearchBox({ country = "us" }) {
+export default function SearchBox({ country = "us", compact = false }) {
   const [q, setQ] = useState("");
   const index = useMemo(() => {
     const parts = FILTERS.map((f) => ({
@@ -30,20 +30,24 @@ export default function SearchBox({ country = "us" }) {
   }, [q, index]);
 
   return (
-    <div className="searchwrap">
+    <div className={compact ? "searchwrap compact" : "searchwrap"}>
       <div className="search">
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Enter filter part number or fridge model — e.g. EDR1RXD1, UKF8001, RF28HMEDBSR"
+          placeholder={
+            compact
+              ? "Search a part number or fridge model…"
+              : "Enter filter part number or fridge model — e.g. EDR1RXD1, UKF8001, RF28HMEDBSR"
+          }
           aria-label="Search by part number or model"
         />
-        <button type="button">Find my filter</button>
+        <button type="button">{compact ? "Search" : "Find my filter"}</button>
       </div>
       {results.length > 0 && (
         <div className="results">
           {results.map((r, i) => (
-            <Link key={i} href={r.url}>
+            <Link key={i} href={r.url} onClick={() => setQ("")}>
               <span>
                 <strong>{r.label}</strong> <span className="tag">· {r.type}</span>
               </span>
@@ -52,9 +56,11 @@ export default function SearchBox({ country = "us" }) {
           ))}
         </div>
       )}
-      <div className="hint">
-        Try a part number (<b>EDR1RXD1</b>, <b>DA29-00020B</b>, <b>MWF</b>) or your fridge’s model number.
-      </div>
+      {!compact && (
+        <div className="hint">
+          Try a part number (<b>EDR1RXD1</b>, <b>DA29-00020B</b>, <b>MWF</b>) or your fridge’s model number.
+        </div>
+      )}
     </div>
   );
 }
