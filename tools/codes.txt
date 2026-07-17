@@ -1,0 +1,17 @@
+# one part code per line; feed to demand_rank.py
+edr1rxd1
+edr2rxd1
+edr3rxd1
+edr4rxd1
+da29-00020b
+lt700p
+lt1000p
+mwf
+xwf
+wf3cb
+ultrawf
+gswf
+haf-qin
+replfltr10
+ukf7003
+9081

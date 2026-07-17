@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Refrigerator water filter">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12c2b0"/><stop offset="1" stop-color="#0aa892"/>
+    </linearGradient>
+    <linearGradient id="b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f272c"/><stop offset="1" stop-color="#08161a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#b)"/>
+  <g transform="translate(200 150)">
+    <ellipse cx="0" cy="118" rx="70" ry="12" fill="#0aa89233"/>
+    <rect x="-46" y="-96" width="92" height="192" rx="30" fill="#0f272c" stroke="#1c3b41" stroke-width="3"/>
+    <rect x="-46" y="-40" width="92" height="90" rx="8" fill="url(#g)" opacity="0.9"/>
+    <rect x="-30" y="-118" width="60" height="34" rx="10" fill="#123138" stroke="#1c3b41" stroke-width="3"/>
+    <circle cx="0" cy="-101" r="9" fill="#12c2b0"/>
+    <g stroke="#eafcf8" stroke-width="3" opacity="0.55" fill="none">
+      <path d="M-24 -18 h48 M-24 0 h48 M-24 18 h48"/>
+    </g>
+    <circle cx="0" cy="70" r="15" fill="#08161a" stroke="#12c2b0" stroke-width="3"/>
+    <path d="M0 62 v16 M-7 70 h14" stroke="#12c2b0" stroke-width="3"/>
+  </g>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#8fb0ab">PartMojo · verified compatible filter</text>
+</svg>
