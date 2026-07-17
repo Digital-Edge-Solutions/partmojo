@@ -28,7 +28,7 @@ export function generateMetadata({ params }) {
       languages: {
         "en-US": `/us/${CATEGORY.slug}/${f.slug}`,
         "en-GB": `/uk/${CATEGORY.slug}/${f.slug}`,
-        "x-default": `/us/${CATEGORY.slug}/${f.slug}`,
+        "x-default": `/uk/${CATEGORY.slug}/${f.slug}`,
       },
     },
   };

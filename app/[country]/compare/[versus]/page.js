@@ -25,7 +25,7 @@ export function generateMetadata({ params }) {
       languages: {
         "en-US": `/us/compare/${p.slug}`,
         "en-GB": `/uk/compare/${p.slug}`,
-        "x-default": `/us/compare/${p.slug}`,
+        "x-default": `/uk/compare/${p.slug}`,
       },
     },
   };

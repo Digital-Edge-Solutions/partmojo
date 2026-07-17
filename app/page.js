@@ -8,7 +8,7 @@ export const metadata = {
   title: "PartMojo — Find the Exact Replacement Filter for Your Fridge",
   description:
     "Enter your fridge water filter part number or model to find the exact replacement, verified cross-references, and the cheapest compatible options. US & UK.",
-  alternates: { canonical: "/", languages: { "en-US": "/us", "en-GB": "/uk", "x-default": "/us" } },
+  alternates: { canonical: "/", languages: { "en-US": "/us", "en-GB": "/uk", "x-default": "/uk" } },
 };
 
 export default function Home() {

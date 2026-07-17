@@ -25,7 +25,7 @@ export function generateMetadata({ params }) {
       languages: {
         "en-US": `/us/water-filters-that-remove/${ct.slug}`,
         "en-GB": `/uk/water-filters-that-remove/${ct.slug}`,
-        "x-default": `/us/water-filters-that-remove/${ct.slug}`,
+        "x-default": `/uk/water-filters-that-remove/${ct.slug}`,
       },
     },
   };

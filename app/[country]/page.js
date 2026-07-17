@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Header, Footer } from "../../components/ui";
 import SearchBox from "../../components/SearchBox";
 import { FILTERS, MODELS, BRANDS, COUNTRIES, CATEGORY, slug, priceFor } from "../../lib/data";
-import { BASE, jsonLd, breadcrumbLd } from "../../lib/site";
+import { BASE, jsonLd, breadcrumbLd, TAGLINE } from "../../lib/site";
 
 export const revalidate = 43200;
 
@@ -20,7 +20,7 @@ export function generateMetadata({ params }) {
     description: `Find the exact ${cat.toLowerCase()} for your fridge by part number or model in the ${c.label}. Verified cross-references, certified specs, best ${c.currency} prices.`,
     alternates: {
       canonical: `/${params.country}`,
-      languages: { "en-US": "/us", "en-GB": "/uk", "x-default": "/us" },
+      languages: { "en-US": "/us", "en-GB": "/uk", "x-default": "/uk" },
     },
   };
 }
@@ -46,8 +46,9 @@ export default function CountryHome({ params }) {
             Your fridge filter, <span className="g">matched exactly</span> — and cheaper.
           </h1>
           <p className="sub">
-            Enter your filter part number or fridge model. PartMojo cross-references every
-            compatible filter so you get the right one at the lowest price.
+            <b style={{ color: "var(--ink)" }}>{TAGLINE}</b> Enter your filter part number or fridge
+            model — PartMojo cross-references every compatible filter so you get the right one at the
+            lowest price.
           </p>
           <SearchBox country={country} />
         </section>

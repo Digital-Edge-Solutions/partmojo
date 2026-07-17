@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { BRAND } from "../lib/site";
+import { BRAND, TAGLINE } from "../lib/site";
 import { COUNTRIES, CATEGORY } from "../lib/data";
 
 export function Header({ country = "us" }) {
   const other = country === "us" ? "uk" : "us";
-  const flag = country === "us" ? "🇺🇸 US" : "🇬🇧 UK";
+  const cur = country === "us" ? "🇺🇸 US · $" : "🇬🇧 UK · £";
+  const otherLabel = country === "us" ? "UK" : "US";
   return (
     <header className="header">
       <div className="container row">
@@ -16,8 +17,8 @@ export function Header({ country = "us" }) {
           <Link href={`/${country}/brands/whirlpool`}>Brands</Link>
           <Link href={`/${country}/tools/find-my-filter`}>Find my filter</Link>
         </nav>
-        <Link href={`/${other}`} className="flag" title="Switch region">
-          {flag} · switch
+        <Link href={`/${other}`} className="flag" title={`Switch to ${otherLabel}`}>
+          {cur} · switch to {otherLabel}
         </Link>
       </div>
     </header>
@@ -33,9 +34,12 @@ export function Footer({ country = "us" }) {
             <div className="logo" style={{ fontSize: 18 }}>
               <span className="dot" /> Part<b>Mojo</b>
             </div>
+            <p style={{ fontWeight: 700, color: "var(--ink)", margin: "8px 0 4px", fontSize: 14 }}>
+              {TAGLINE}
+            </p>
             <p className="small" style={{ maxWidth: 320 }}>
-              The fastest way to find the exact replacement part for your appliance.
-              Verified compatibility, certified specs, best prices.
+              The independent finder for the exact replacement part your appliance needs —
+              verified compatibility, certified specs, best price.
             </p>
           </div>
           <div>
@@ -63,9 +67,9 @@ export function Footer({ country = "us" }) {
           <div>
             <strong>Regions</strong>
             <p className="small">
-              <Link href="/us">United States</Link>
+              <Link href="/uk">🇬🇧 United Kingdom (£)</Link>
               <br />
-              <Link href="/uk">United Kingdom</Link>
+              <Link href="/us">🇺🇸 United States ($)</Link>
             </p>
           </div>
         </div>

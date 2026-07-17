@@ -20,7 +20,7 @@ export function generateMetadata({ params }) {
       languages: {
         "en-US": "/us/tools/find-my-filter",
         "en-GB": "/uk/tools/find-my-filter",
-        "x-default": "/us/tools/find-my-filter",
+        "x-default": "/uk/tools/find-my-filter",
       },
     },
   };
