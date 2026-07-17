@@ -54,19 +54,43 @@ function loadKnown() {
   return known;
 }
 
+// Quote-aware CSV row splitter — handles Excel/Google Sheets exports where a
+// cell containing a comma is wrapped in "double quotes".
+function splitCSVLine(line, delim) {
+  const out = [];
+  let field = "", q = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (q) {
+      if (c === '"' && line[i + 1] === '"') { field += '"'; i++; }
+      else if (c === '"') q = false;
+      else field += c;
+    } else if (c === '"') q = true;
+    else if (c === delim) { out.push(field); field = ""; }
+    else field += c;
+  }
+  out.push(field);
+  return out;
+}
+
 function parseCSV(text) {
   const lines = text.split(/\r?\n/).filter((l) => l.trim());
   const delim = lines[0].includes("\t") ? "\t" : ",";
-  const headers = lines[0].split(delim).map((h) => h.trim().toLowerCase());
+  const headers = splitCSVLine(lines[0], delim).map((h) => h.trim().toLowerCase());
+  const multi = (v) => (v || "").split(/[;|]/).map((s) => s.trim()).filter(Boolean);
   return lines.slice(1).map((line) => {
-    const cells = line.split(delim);
+    const cells = splitCSVLine(line, delim);
     const o = {};
     headers.forEach((h, i) => (o[h] = (cells[i] || "").trim()));
     return {
       code: o.code || o.part || o.part_number || "",
       brand: o.brand || o.manufacturer || "",
-      aka: (o.aka || o.replaces || "").split(/[;|]/).map((s) => s.trim()).filter(Boolean),
-      fits: (o.fits || o.models || "").split(/[;|]/).map((s) => s.trim()).filter(Boolean),
+      family: o.family || o.series || "",
+      aka: multi(o.aka || o.replaces || o.alternate_codes),
+      fits: multi(o.fits || o.models || o.fits_models),
+      reduces: multi(o.reduces),
+      certifications: multi(o.certifications || o.certs),
+      demand: o.demand || "medium",
     };
   });
 }

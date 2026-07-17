@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Header, Footer, Breadcrumb } from "../../../../components/ui";
 import { COUNTRIES } from "../../../../lib/data";
 import { HOUSING_FILTERS, housingBySlug, HOUSING_CATEGORY, HOUSING_BRANDS } from "../../../../lib/housing";
-import { jsonLd, breadcrumbLd, amazonSearchUrl, PRODUCT_IMAGE } from "../../../../lib/site";
+import { jsonLd, breadcrumbLd, amazonSearchUrl, PRODUCT_IMAGE, ogImage } from "../../../../lib/site";
 
 export const revalidate = 43200;
 export const dynamicParams = false;
@@ -22,6 +22,7 @@ export function generateMetadata({ params }) {
       canonical: `/us/whole-house-water-filters/${f.slug}`,
       languages: { "en-US": `/us/whole-house-water-filters/${f.slug}`, "x-default": `/us/whole-house-water-filters/${f.slug}` },
     },
+    openGraph: { images: [{ url: ogImage({ code: `${f.dims} ${f.micron}µm`, kind: `${f.typeName.split(" (")[0]} cartridge`, specs: [`${f.dims} in`, `${f.micron} micron`] }), width: 1200, height: 630 }] },
   };
 }
 
@@ -141,7 +142,7 @@ export default function HousingFilterPage({ params }) {
 
           <aside>
             <div className="buybox">
-              <img src={PRODUCT_IMAGE} alt={`${f.code}`} width="400" height="300" style={{ width: "100%", height: "auto", borderRadius: 12, marginBottom: 12, border: "1px solid var(--line)" }} />
+              <img src={ogImage({ code: `${f.dims} · ${f.micron}µm`, brand: typeShort, kind: "Whole-house cartridge", specs: [`${f.dims} in`, `${f.micron} micron`, f.change] })} alt={f.code} width="1200" height="630" style={{ width: "100%", height: "auto", borderRadius: 12, marginBottom: 12, border: "1px solid var(--line)" }} />
               <div className="small" style={{ marginBottom: 4 }}>Typical price · often sold in multi-packs</div>
               <div className="price">{c.symbol}{f.priceUS.toFixed(2)} <small>/ cartridge</small></div>
               <a className="cta" href={buy("")} rel="sponsored nofollow" target="_blank">

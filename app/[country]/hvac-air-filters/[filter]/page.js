@@ -5,7 +5,7 @@ import { COUNTRIES } from "../../../../lib/data";
 import {
   HVAC_FILTERS, hvacBySlug, HVAC_CATEGORY, HVAC_BRANDS, mervBy, actualSize, changeEvery, packHint,
 } from "../../../../lib/hvac";
-import { jsonLd, breadcrumbLd, amazonSearchUrl, PRODUCT_IMAGE } from "../../../../lib/site";
+import { jsonLd, breadcrumbLd, amazonSearchUrl, PRODUCT_IMAGE, ogImage } from "../../../../lib/site";
 
 export const revalidate = 43200;
 export const dynamicParams = false;
@@ -18,6 +18,7 @@ export function generateMetadata({ params }) {
   const f = hvacBySlug[params.filter];
   if (!f) return {};
   const m = mervBy[f.merv];
+  const og = ogImage({ code: f.code, kind: "Furnace & AC air filter", specs: [`${f.dims} in`, `MERV ${f.merv}`, changeEvery(f.depth)] });
   return {
     title: `${f.code} Air Filter — ${f.dims} Furnace Filter (Actual ${actualSize(f.w, f.h, f.depth).split(" ×").slice(0, 2).join(" ×")})`,
     description: `${f.code} furnace & AC air filter. Actual size ${actualSize(f.w, f.h, f.depth)}. Captures ${m.captures}. Change ${changeEvery(f.depth)}. Compare prices from top brands.`,
@@ -28,6 +29,7 @@ export function generateMetadata({ params }) {
         "x-default": `/us/hvac-air-filters/${f.slug}`,
       },
     },
+    openGraph: { images: [{ url: og, width: 1200, height: 630 }] },
   };
 }
 
@@ -187,7 +189,7 @@ export default function HvacFilterPage({ params }) {
 
           <aside>
             <div className="buybox">
-              <img src={PRODUCT_IMAGE} alt={`${f.code} air filter`} width="400" height="300" style={{ width: "100%", height: "auto", borderRadius: 12, marginBottom: 12, border: "1px solid var(--line)" }} />
+              <img src={ogImage({ code: f.code, kind: "Furnace & AC air filter", specs: [`${f.dims} in`, `MERV ${f.merv}`, actual, changeEvery(f.depth)] })} alt={`${f.code} ${f.dims} MERV ${f.merv} air filter`} width="1200" height="630" style={{ width: "100%", height: "auto", borderRadius: 12, marginBottom: 12, border: "1px solid var(--line)" }} />
               <div className="small" style={{ marginBottom: 4 }}>Typical price · {packHint(f.depth)}</div>
               <div className="price">
                 {c.symbol}{f.priceUS.toFixed(2)} <small>/ filter</small>

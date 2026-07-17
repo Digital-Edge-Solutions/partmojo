@@ -4,7 +4,7 @@ import { Header, Footer, Breadcrumb } from "../../../../components/ui";
 import {
   FILTERS, bySlug, byCode, COUNTRIES, CATEGORY, AFTERMARKET, CONTAMINANTS, slug, priceFor,
 } from "../../../../lib/data";
-import { BASE, jsonLd, breadcrumbLd, affiliateUrl, PRODUCT_IMAGE } from "../../../../lib/site";
+import { BASE, jsonLd, breadcrumbLd, affiliateUrl, PRODUCT_IMAGE, ogImage } from "../../../../lib/site";
 
 export const revalidate = 43200; // ISR: refresh prices/stock every 12h without a rebuild
 
@@ -31,6 +31,7 @@ export function generateMetadata({ params }) {
         "x-default": `/uk/${CATEGORY.slug}/${f.slug}`,
       },
     },
+    openGraph: { images: [{ url: ogImage({ code: f.code, brand: f.brand, kind: "Fridge water filter", specs: [`${f.capacityMonths}-month life`, `${f.micron} micron`, `fits ${f.fits.length}+ models`] }), width: 1200, height: 630 }] },
   };
 }
 
@@ -280,7 +281,7 @@ export default function FilterPage({ params }) {
 
           <aside>
             <div className="buybox">
-              <img src={PRODUCT_IMAGE} alt={`${f.code} refrigerator water filter`} width="400" height="300" style={{ width: "100%", height: "auto", borderRadius: 12, marginBottom: 12, border: "1px solid var(--line)" }} />
+              <img src={ogImage({ code: f.code, brand: f.brand, kind: "Fridge water filter", specs: [`${f.capacityMonths}-month life`, `${f.micron} micron`, `fits ${f.fits.length}+ models`] })} alt={`${f.code} refrigerator water filter`} width="1200" height="630" style={{ width: "100%", height: "auto", borderRadius: 12, marginBottom: 12, border: "1px solid var(--line)" }} />
               <div className="small" style={{ marginBottom: 4 }}>Best compatible price</div>
               <div className="price">
                 {c.symbol}{price.aftermarket.toFixed(2)} <small>/ filter</small>

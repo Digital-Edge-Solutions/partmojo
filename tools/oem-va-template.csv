@@ -1,0 +1,7 @@
+code,brand,family,aka,fits,reduces,certifications,demand,source_url,notes
+EDR6D1,Whirlpool,EveryDrop,Filter 6; W10311524; W10238154,WRV996FDEM; WRX986SIHZ; WRF996FDEM; MFT2776FEZ,Chlorine taste & odour; Lead; Cysts,NSF/ANSI 42; NSF/ANSI 53,medium,https://www.everydropwater.com/,EXAMPLE ROW — a real distinct filter with its alternate numbers and the models it fits
+DA29-00012B,Samsung,Aqua-Pure,DA29-00012A; HAFCU2,RS261MDRS; RF267AERS; RS23KGRS,Chlorine taste & odour; Sediment,NSF/ANSI 42,low,https://www.samsung.com/,EXAMPLE ROW — only include models the OEM actually lists; leave a cell blank if unknown
+SGF-LA22,Swift Green,Swift Green,,,,, ,,DELETE THIS ROW — do NOT add generic/aftermarket-brand versions of a filter we already list; only OEM distinct filters
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
