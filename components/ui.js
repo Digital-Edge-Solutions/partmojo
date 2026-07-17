@@ -15,7 +15,9 @@ export function Header({ country = "us" }) {
         </Link>
         <nav className="nav">
           <Link href={`/${country}/${CATEGORY.slug}`}>Fridge Filters</Link>
-          <Link href={`/${country}/brands/whirlpool`}>Brands</Link>
+          {country === "us" && <Link href={`/${country}/hvac-air-filters`}>Air Filters</Link>}
+          {country === "uk" && <Link href={`/${country}/descaler`}>Descaler</Link>}
+          <Link href={`/${country}/brands`}>Brands</Link>
           <Link href={`/${country}/tools/find-my-filter`}>Find my filter</Link>
         </nav>
         <Link href={`/${other}`} className="flag" title={`Switch to ${otherLabel}`}>
@@ -51,11 +53,13 @@ export function Footer({ country = "us" }) {
             <p className="small">
               <Link href={`/${country}/refrigerator-water-filters`}>Fridge water filters</Link>
               <br />
+              <Link href="/us/hvac-air-filters">HVAC &amp; furnace filters (US)</Link>
+              <br />
               <Link href={`/${country}/tools/find-my-filter`}>Find my filter tool</Link>
               <br />
               <Link href="/uk/descaler">Coffee &amp; kettle descaler (UK)</Link>
               <br />
-              <span style={{ opacity: 0.5 }}>Vacuum filters &amp; bags (soon)</span>
+              <span style={{ opacity: 0.5 }}>Vacuum spares &amp; bags (soon)</span>
             </p>
           </div>
           <div>

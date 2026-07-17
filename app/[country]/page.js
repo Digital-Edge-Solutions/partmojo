@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, Footer } from "../../components/ui";
 import SearchBox from "../../components/SearchBox";
-import { FILTERS, MODELS, BRANDS, COUNTRIES, CATEGORY, slug, priceFor } from "../../lib/data";
+import { MODELS, BRANDS, COUNTRIES, CATEGORY, slug } from "../../lib/data";
 import { BASE, jsonLd, breadcrumbLd, TAGLINE } from "../../lib/site";
 
 export const revalidate = 43200;
@@ -30,7 +30,6 @@ export default function CountryHome({ params }) {
   const c = COUNTRIES[country];
   if (!c) notFound();
   const cat = country === "uk" ? CATEGORY.nameUK : CATEGORY.name;
-  const popular = FILTERS.filter((f) => f.demand === "high");
   const topModels = MODELS.slice(0, 10);
 
   const bc = breadcrumbLd([{ name: "Home", url: `/${country}` }]);
@@ -54,31 +53,17 @@ export default function CountryHome({ params }) {
         </section>
 
         <section className="section">
-          <h2>Most-searched filters</h2>
-          <p className="lead">The part numbers people look up most — verified compatibility and specs.</p>
-          <div className="grid g4">
-            {popular.map((f) => (
-              <Link key={f.slug} href={`/${country}/${CATEGORY.slug}/${f.slug}`} className="card">
-                <span className={`tier ${f.demand}`}>{f.demand} demand</span>
-                <h3 style={{ marginTop: 10 }}>{f.code}</h3>
-                <p className="meta">{f.brand} · fits {f.fits.length}+ models</p>
-                <p className="meta" style={{ marginTop: 6 }}>
-                  from <b>{c.symbol}{priceFor(f, country).aftermarket.toFixed(2)}</b>
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="section">
           <h2>Browse by brand</h2>
-          <p className="lead">Every filter for your fridge brand in one place.</p>
+          <p className="lead">Pick your fridge brand to see every filter it uses and the models each one fits.</p>
           <div className="chips">
             {BRANDS.map((b) => (
               <Link key={b} href={`/${country}/brands/${slug(b)}`} className="chip">
                 {b}
               </Link>
             ))}
+            <Link href={`/${country}/brands`} className="chip" style={{ borderColor: "var(--brand)" }}>
+              All brands →
+            </Link>
           </div>
         </section>
 
@@ -96,6 +81,32 @@ export default function CountryHome({ params }) {
           <p className="hint" style={{ marginTop: 12 }}>
             <Link href={`/${country}/${CATEGORY.slug}`}>See all filters &amp; models →</Link>
           </p>
+        </section>
+
+        <section className="section">
+          <h2>More parts categories</h2>
+          <p className="lead">Same idea, more of your home — find the exact part by number or size.</p>
+          <div className="grid g3">
+            <Link href={`/${country}/${CATEGORY.slug}`} className="card">
+              <h3>Fridge water filters</h3>
+              <p className="meta">Match by part number or fridge model — OEM vs cheaper certified.</p>
+            </Link>
+            {country === "us" ? (
+              <Link href={`/${country}/hvac-air-filters`} className="card">
+                <h3>HVAC &amp; furnace air filters</h3>
+                <p className="meta">Every standard size in MERV 8, 11 &amp; 13 — with the real dimensions.</p>
+              </Link>
+            ) : (
+              <Link href="/uk/descaler" className="card">
+                <h3>Coffee &amp; kettle descaler</h3>
+                <p className="meta">The right descaler for your machine — beat UK limescale.</p>
+              </Link>
+            )}
+            <Link href={`/${country}/tools/find-my-filter`} className="card">
+              <h3>Find-my-filter tool</h3>
+              <p className="meta">Not sure what you need? Enter your model and we&apos;ll match it.</p>
+            </Link>
+          </div>
         </section>
       </main>
       <Footer country={country} />
