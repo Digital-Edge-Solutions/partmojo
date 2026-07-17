@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header, Footer, Breadcrumb } from "../../../components/ui";
 import { COUNTRIES } from "../../../lib/data";
-import { HVAC_CATEGORY, HVAC_SIZES, MERV, DEPTHS } from "../../../lib/hvac";
+import { HVAC_CATEGORY, HVAC_SIZES, MERV, DEPTHS, HVAC_BRAND_DATA } from "../../../lib/hvac";
 import { jsonLd, breadcrumbLd } from "../../../lib/site";
 
 export const revalidate = 43200;
@@ -28,10 +28,6 @@ export default function HvacHub({ params }) {
   const { country } = params;
   const c = COUNTRIES[country];
   if (!c) notFound();
-
-  const popular = HVAC_SIZES.filter((s) =>
-    ["16x25", "20x25", "20x20", "16x20", "14x25", "14x20", "20x30", "24x24"].includes(s.slug)
-  );
 
   const bc = breadcrumbLd([
     { name: "Home", url: `/${country}` },
@@ -67,22 +63,8 @@ export default function HvacHub({ params }) {
         </section>
 
         <section className="section" style={{ paddingTop: 8 }}>
-          <h2>Most-searched sizes</h2>
-          <p className="lead">The sizes that fit the majority of US furnaces and return grilles.</p>
-          <div className="grid g4">
-            {popular.map((s) => (
-              <Link key={s.slug} href={`/${country}/hvac-air-filters/size/${s.slug}`} className="card">
-                <span className="tier high">popular</span>
-                <h3 style={{ marginTop: 10 }}>{s.dims}</h3>
-                <p className="meta">MERV 8 · 11 · 13 — 1&quot;, 2&quot; &amp; 4&quot; depths</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="section">
-          <h2>All standard sizes</h2>
-          <p className="lead">Tap your size for every MERV rating and depth, with live prices.</p>
+          <h2>Choose your size</h2>
+          <p className="lead">Read the three numbers on the edge of your old filter, then tap that size for every MERV rating and depth with live prices.</p>
           <div className="chips">
             {HVAC_SIZES.map((s) => (
               <Link key={s.slug} href={`/${country}/hvac-air-filters/size/${s.slug}`} className="chip">
@@ -103,6 +85,18 @@ export default function HvacHub({ params }) {
                 <p className="meta">Captures {m.captures}.</p>
                 <p className="meta" style={{ marginTop: 6 }}>Best for {m.best}. (MPR ~{m.mpr}, FPR {m.fpr}.)</p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="section">
+          <h2>Shop by brand</h2>
+          <p className="lead">Prefer a specific brand? Jump to its sizes and MERV options.</p>
+          <div className="chips">
+            {HVAC_BRAND_DATA.map((b) => (
+              <Link key={b.name} href={`/${country}/hvac-air-filters/brand/${b.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} className="chip">
+                {b.name}
+              </Link>
             ))}
           </div>
         </section>

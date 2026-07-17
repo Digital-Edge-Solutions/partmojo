@@ -108,10 +108,29 @@ export default function FilterPage({ params }) {
     { name: f.code, url: `/${country}/${CATEGORY.slug}/${f.slug}` },
   ]);
 
+  // ---- HowTo: replacing the filter (generic, accurate for push-in/twist fridge filters) ----
+  const howToSteps = [
+    { name: "Locate the filter", text: `On most ${f.brand} fridges the ${f.code} sits inside the top-right of the fresh-food compartment, in the bottom base grille, or lower rear. Check your manual if unsure.` },
+    { name: "Release the old filter", text: `Turn the old cartridge a quarter-turn counter-clockwise, or press the release button, and pull it straight out. A little water drip is normal.` },
+    { name: "Prep the new filter", text: `Unwrap the new ${f.code} (or a certified equivalent) and remove the protective caps from the O-rings.` },
+    { name: "Insert and lock", text: `Push the new filter in and turn clockwise until it clicks or the arrow lines up. It should seat firmly without forcing.` },
+    { name: "Flush the line", text: `Run 2–4 gallons (about 4 minutes) through the dispenser to clear harmless carbon fines and air, until the water runs clear.` },
+    { name: "Reset the indicator", text: `Press and hold the filter-status button for ~3 seconds until the light turns from red back to blue/green.` },
+  ];
+  const howToLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to replace the ${f.code} refrigerator water filter`,
+    totalTime: "PT5M",
+    supply: [{ "@type": "HowToSupply", name: `${f.code} replacement filter` }],
+    step: howToSteps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, name: s.name, text: s.text })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(productLd)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqLd)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(howToLd)} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(bc)} />
       <Header country={country} />
       <Breadcrumb
@@ -124,7 +143,6 @@ export default function FilterPage({ params }) {
       <main className="container">
         <div className="pt">
           <div>
-            <span className={`tier ${f.demand}`}>{f.demand} demand</span>{" "}
             <span className="badge">{f.brand}</span>
             <h1 style={{ marginTop: 10 }}>
               {f.code} Refrigerator Water Filter Replacement
@@ -166,6 +184,29 @@ export default function FilterPage({ params }) {
                     <span className="t">confirm fit →</span>
                   </Link>
                 ))}
+              </div>
+            </div>
+
+            <div className="section" style={{ paddingTop: 8 }}>
+              <h2>How to replace the {f.code}</h2>
+              <p className="lead">Takes about 5 minutes, no tools. The steps are the same for the OEM {f.code} and any certified equivalent.</p>
+              <div className="faq">
+                {howToSteps.map((s, i) => (
+                  <details key={i} open={i === 0}>
+                    <summary>{i + 1}. {s.name}</summary>
+                    <p>{s.text}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+
+            <div className="section" style={{ paddingTop: 8 }}>
+              <h2>Signs it&apos;s time to replace it</h2>
+              <p className="lead">Swap the {f.code} when you notice any of these — don&apos;t wait past {f.capacityMonths} months.</p>
+              <div className="grid g3">
+                <div className="card"><h3>Slower dispenser</h3><p className="meta">Water or ice comes out slower than usual — the filter is clogging.</p></div>
+                <div className="card"><h3>Taste or odour returns</h3><p className="meta">A chlorine or musty taste means the carbon is spent.</p></div>
+                <div className="card"><h3>Filter light is red</h3><p className="meta">Your fridge has counted ~{f.capacityGallons} gallons or {f.capacityMonths} months.</p></div>
               </div>
             </div>
 

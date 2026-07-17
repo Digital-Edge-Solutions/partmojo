@@ -73,9 +73,9 @@ export default function FindMyFilter({ params }) {
         </section>
 
         <section className="section">
-          <h2>Popular filters</h2>
+          <h2>Browse filters</h2>
           <div className="chips">
-            {FILTERS.filter((f) => f.demand === "high").map((f) => (
+            {FILTERS.map((f) => (
               <Link key={f.slug} href={`/${country}/${CATEGORY.slug}/${f.slug}`} className="chip">{f.code}</Link>
             ))}
           </div>

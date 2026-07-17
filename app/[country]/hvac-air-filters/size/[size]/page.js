@@ -107,6 +107,13 @@ export default function HvacSizeHub({ params }) {
               </div>
             ))}
           </div>
+          <div className="chips" style={{ marginTop: 14 }}>
+            {[[8, 11], [11, 13], [8, 13]].map(([a, b]) => (
+              <Link key={`${a}-${b}`} href={`/${country}/hvac-air-filters/compare/${s.slug}x1-merv-${a}-vs-${b}`} className="chip">
+                MERV {a} vs {b} →
+              </Link>
+            ))}
+          </div>
           <p className="hint" style={{ marginTop: 12 }}>
             <Link href={`/${country}/hvac-air-filters`}>← All air filter sizes</Link>
           </p>

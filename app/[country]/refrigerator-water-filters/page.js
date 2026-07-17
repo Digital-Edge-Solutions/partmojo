@@ -90,7 +90,7 @@ export default function CategoryHub({ params }) {
         </section>
 
         <section className="section">
-          <h2>Popular comparisons</h2>
+          <h2>Side-by-side comparisons</h2>
           <p className="lead">Not sure which of two similar filters you need? Compare them side by side.</p>
           <div className="chips">
             {COMPARE_PAIRS.slice(0, 12).map((p) => (

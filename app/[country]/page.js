@@ -92,10 +92,16 @@ export default function CountryHome({ params }) {
               <p className="meta">Match by part number or fridge model — OEM vs cheaper certified.</p>
             </Link>
             {country === "us" ? (
-              <Link href={`/${country}/hvac-air-filters`} className="card">
-                <h3>HVAC &amp; furnace air filters</h3>
-                <p className="meta">Every standard size in MERV 8, 11 &amp; 13 — with the real dimensions.</p>
-              </Link>
+              <>
+                <Link href={`/${country}/hvac-air-filters`} className="card">
+                  <h3>HVAC &amp; furnace air filters</h3>
+                  <p className="meta">Every standard size in MERV 8, 11 &amp; 13 — with the real dimensions.</p>
+                </Link>
+                <Link href={`/${country}/whole-house-water-filters`} className="card">
+                  <h3>Whole-house &amp; under-sink filters</h3>
+                  <p className="meta">Sediment, carbon &amp; GAC cartridges by housing size and micron.</p>
+                </Link>
+              </>
             ) : (
               <Link href="/uk/descaler" className="card">
                 <h3>Coffee &amp; kettle descaler</h3>

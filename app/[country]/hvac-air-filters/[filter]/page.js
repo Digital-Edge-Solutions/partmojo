@@ -128,7 +128,6 @@ export default function HvacFilterPage({ params }) {
       <main className="container">
         <div className="pt">
           <div>
-            <span className={`tier ${f.demand}`}>{f.demand} demand</span>{" "}
             <span className="badge">MERV {f.merv} · {m.tone}</span>
             <h1 style={{ marginTop: 10 }}>
               {f.code} Furnace &amp; AC Air Filter

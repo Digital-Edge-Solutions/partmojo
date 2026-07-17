@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default function Home() {
-  const popular = FILTERS.filter((f) => f.demand === "high").slice(0, 8);
+  const examples = FILTERS.slice(0, 8); // example quick-links under the search box
   const org = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -41,7 +41,7 @@ export default function Home() {
           </p>
           <SearchBox country="us" />
           <div className="chips" style={{ marginTop: 18 }}>
-            {popular.map((f) => (
+            {examples.map((f) => (
               <Link key={f.slug} href={`/us/${CATEGORY.slug}/${f.slug}`} className="chip">
                 {f.code}
               </Link>

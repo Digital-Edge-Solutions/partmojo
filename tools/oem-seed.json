@@ -1,0 +1,22 @@
+[
+  {
+    "code": "EDR6D1", "brand": "Whirlpool", "family": "EveryDrop",
+    "aka": ["Filter 6", "W10311524", "W10238154"],
+    "fits": ["WRV996FDEM", "WRX986SIHZ", "WRV986FDEM", "WRF996FDEM", "MFT2776FEZ", "KRMF706ESS"],
+    "reduces": ["Chlorine taste & odour", "Lead", "Cysts", "Pharmaceuticals"],
+    "certifications": ["NSF/ANSI 42", "NSF/ANSI 53", "NSF/ANSI 401"],
+    "demand": "medium"
+  },
+  { "code": "46-9930", "brand": "Kenmore", "aka": ["9930"], "note": "Kenmore rebadge of EveryDrop Filter 1 / EDR1RXD1 — should MERGE as aka, not a new page." },
+  { "code": "W10295370A", "brand": "Whirlpool", "note": "Alt number for EDR1RXD1 — already covered, should MERGE." },
+  { "code": "HAF-CIN", "brand": "Samsung", "note": "Alt number for DA29-00020B — already covered, should MERGE." },
+  {
+    "code": "RPWF", "brand": "GE", "family": "GE",
+    "aka": ["WR17X30702"],
+    "fits": ["GFE28GYNFS", "GNE27JYMFS", "GDE25EYKFS", "GFE26JYMFS"],
+    "reduces": ["Chlorine taste & odour", "Lead", "Cysts"],
+    "certifications": ["NSF/ANSI 42", "NSF/ANSI 53"],
+    "demand": "medium",
+    "note": "GE RPWF (non-chip) — DISTINCT from RPWFE. VERIFY exact fit models against GE cross-ref before publishing."
+  }
+]

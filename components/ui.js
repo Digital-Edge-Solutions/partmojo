@@ -55,6 +55,8 @@ export function Footer({ country = "us" }) {
               <br />
               <Link href="/us/hvac-air-filters">HVAC &amp; furnace filters (US)</Link>
               <br />
+              <Link href="/us/whole-house-water-filters">Whole-house &amp; under-sink filters (US)</Link>
+              <br />
               <Link href={`/${country}/tools/find-my-filter`}>Find my filter tool</Link>
               <br />
               <Link href="/uk/descaler">Coffee &amp; kettle descaler (UK)</Link>

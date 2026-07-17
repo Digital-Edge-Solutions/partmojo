@@ -25,11 +25,22 @@ export const metadata = {
 // they just aren't monetised through the network yet.
 const SOVRN_KEY = "SOVRN_KEY";
 
+// Google Analytics 4 (GA4) measurement ID.
+const GA_ID = "G-X0KL3ZL769";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgLd())} />
+        {GA_ID && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga4" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+            </Script>
+          </>
+        )}
         {children}
         {SOVRN_KEY !== "SOVRN_KEY" && (
           <Script id="sovrn" strategy="afterInteractive">
