@@ -58,10 +58,8 @@ export default function FilterPage({ params }) {
     mpn: f.code,
     brand: { "@type": "Brand", name: f.brand },
     category: cat,
-    image: PRODUCT_IMAGE,
-    description: `${f.brand} ${f.code} refrigerator water filter. Also sold as ${f.aka.join(", ")}. NSF-certified; reduces ${f.reduces.join(", ").toLowerCase()}.`,
-    isConsumableFor: f.fits.map((m) => ({ "@type": "Product", name: `${f.brand} ${m}` })),
-    isAccessoryOrSparePartFor: f.fits.map((m) => ({ "@type": "Product", name: `${f.brand} ${m}` })),
+    image: ogImage({ code: f.code, brand: f.brand, kind: "Fridge water filter", specs: [`${f.capacityMonths}-month life`, `${f.micron} micron`, `fits ${f.fits.length}+ models`] }),
+    description: `${f.brand} ${f.code} refrigerator water filter. Also sold as ${f.aka.join(", ")}. NSF-certified; reduces ${f.reduces.join(", ").toLowerCase()}. Fits ${f.brand} models ${f.fits.slice(0, 6).join(", ")} and more.`,
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: c.currency,
@@ -74,6 +72,7 @@ export default function FilterPage({ params }) {
       { "@type": "PropertyValue", name: "Filter life", value: `${f.capacityMonths} months / ${f.capacityGallons} gallons` },
       { "@type": "PropertyValue", name: "Micron rating", value: `${f.micron} micron` },
       { "@type": "PropertyValue", name: "Certifications", value: f.certifications.join(", ") },
+      { "@type": "PropertyValue", name: "Compatible models", value: f.fits.join(", ") },
     ],
   };
   const faqs = [
