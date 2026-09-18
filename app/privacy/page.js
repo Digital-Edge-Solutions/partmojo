@@ -61,6 +61,13 @@ export default function Privacy() {
             purchase to us. Those cookies are set on the retailer’s or network’s site, not ours, and
             are covered by their privacy policies. You can control cookies through your browser settings.
           </p>
+          <h2 style={{ marginTop: 20 }}>Contact form</h2>
+          <p className="lead">
+            If you use our contact form we collect your name, email address and message, and use them only
+            to reply (lawful basis: legitimate interests). The form is delivered to our inbox by FormSubmit
+            (formsubmit.co), acting as our processor. We keep messages for up to 24 months after our last
+            contact, then delete them.
+          </p>
           <h2 style={{ marginTop: 20 }}>Third parties</h2>
           <p className="lead">
             We link to third-party retailers and use affiliate networks; their own privacy policies

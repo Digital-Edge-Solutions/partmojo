@@ -1,10 +1,8 @@
 "use client";
 import { useState } from "react";
 
-// Web3Forms delivers submissions to info@digitaledge.uk. The email is configured on the
-// Web3Forms dashboard and is NOT exposed in the page source — only this public access key is.
-// Get a free key at https://web3forms.com (enter info@digitaledge.uk) and paste it below.
-const ACCESS_KEY = "WEB3FORMS_ACCESS_KEY";
+// Submissions go to our own /api/contact route, which forwards them to the Digital Edge
+// inbox via FormSubmit (same setup as the other sites). No keys or addresses in the page.
 
 export default function ContactForm() {
   const [status, setStatus] = useState("idle"); // idle | sending | ok | error
@@ -13,23 +11,16 @@ export default function ContactForm() {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
-    if (data.botcheck) return; // honeypot: silently drop bots
+    if (data.botcheck) return; // honeypot: silently drop bots (the API checks too)
     setStatus("sending");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          subject: "New PartMojo contact message",
-          from_name: "PartMojo website",
-          name: data.name,
-          email: data.email,
-          message: data.message,
-        }),
+        body: JSON.stringify({ name: data.name, email: data.email, message: data.message, botcheck: data.botcheck }),
       });
       const json = await res.json();
-      if (json.success) {
+      if (json.ok) {
         setStatus("ok");
         form.reset();
       } else {
