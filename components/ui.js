@@ -1,6 +1,6 @@
 import Link from "next/link";
 import SearchBox from "./SearchBox";
-import { BRAND, TAGLINE, OPERATOR } from "../lib/site";
+import { BRAND, TAGLINE, OPERATOR, COMPANY_NUMBER, COMPANY_URL } from "../lib/site";
 import { COUNTRIES, CATEGORY } from "../lib/data";
 
 export function Header({ country = "us" }) {
@@ -90,6 +90,11 @@ export function Footer({ country = "us" }) {
           commission at no extra cost to you — see our{" "}
           <Link href="/affiliate-disclosure">affiliate disclosure</Link>. As an Amazon Associate we
           earn from qualifying purchases. © {BRAND}, operated by {OPERATOR}.
+        </p>
+        <p className="small" style={{ marginTop: 6, opacity: 0.7 }}>
+          {OPERATOR} (trading as Digital Edge) · Company no.{" "}
+          <a href={COMPANY_URL} target="_blank" rel="noopener noreferrer">{COMPANY_NUMBER}</a> ·
+          Registered in England and Wales
         </p>
       </div>
     </footer>
