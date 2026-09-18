@@ -74,6 +74,8 @@ export function Footer({ country = "us" }) {
               <Link href="/affiliate-disclosure">Affiliate disclosure</Link>
               <br />
               <Link href="/privacy">Privacy policy</Link>
+              <br />
+              <a href="/privacy#cookies" data-cookie-settings="">Cookie settings</a>
             </p>
           </div>
           <div>

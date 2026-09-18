@@ -26,16 +26,40 @@ export default function Privacy() {
           <h2 style={{ marginTop: 20 }}>What we collect</h2>
           <p className="lead">
             {BRAND} is an information and comparison site. We do not require you to create an account
-            and we do not ask for personal information to browse. We collect only standard,
-            anonymised analytics (such as pages visited and general location) to understand what’s
-            useful and improve the site.
+            and we do not ask for personal information to browse. With your consent we use Google
+            Analytics (pages visited, how you arrived, approximate location, device and browser type)
+            to understand what’s useful and improve the site.
           </p>
-          <h2 style={{ marginTop: 20 }}>Cookies &amp; affiliate tracking</h2>
+          <h2 id="cookies" style={{ marginTop: 20 }}>Cookies</h2>
+          <p className="lead">
+            When you first visit, a banner asks whether you accept analytics cookies.{" "}
+            <strong>Nothing optional is set until you choose</strong>, Reject is as easy as Accept, and
+            the site works the same either way.
+          </p>
+          <ul className="lead">
+            <li>
+              <strong>de_consent</strong> (strictly necessary, set by us): remembers your choice so we
+              don’t ask on every page. Lasts 6 months, after which we ask again.
+            </li>
+            <li>
+              <strong>_ga</strong> and <strong>_ga_X0KL3ZL769</strong> (Google Analytics,{" "}
+              <strong>only if you accept</strong>): count visits and show which pages help. Last up to
+              2 years.
+            </li>
+          </ul>
+          <p className="lead">
+            We use Google Consent Mode: until you accept, Google Analytics is told not to store cookies
+            or identifiers, and Google may receive only basic, cookieless signals (such as that a page
+            was viewed). <strong>Changing your choice:</strong> click{" "}
+            <a href="/privacy#cookies" data-cookie-settings="">Cookie settings</a> (also in every page
+            footer) at any time. If you switch to Reject we delete the Google Analytics cookies.
+          </p>
+          <h2 style={{ marginTop: 20 }}>Affiliate tracking</h2>
           <p className="lead">
             When you click an outbound link to a retailer, that retailer or an affiliate network
             (such as Sovrn, Amazon Associates, or Awin) may set a cookie to attribute any resulting
-            purchase to us. These cookies do not identify you to us personally. You can control
-            cookies through your browser settings.
+            purchase to us. Those cookies are set on the retailer’s or network’s site, not ours, and
+            are covered by their privacy policies. You can control cookies through your browser settings.
           </p>
           <h2 style={{ marginTop: 20 }}>Third parties</h2>
           <p className="lead">

@@ -116,3 +116,9 @@ h1 .g{background:linear-gradient(135deg,#5fe6d5,#12c2b0 55%,#28d1a5);-webkit-bac
 .searchwrap.compact input{font-size:14px;padding:9px 10px}
 .searchwrap.compact .search button{padding:9px 15px;font-size:13px}
 .searchwrap.compact .results{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:60;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+
+/* Cookie banner (public/consent.js) uses the shared --de-* design-system tokens; map them to PartMojo's palette. */
+.de-consent{--de-surface-raised:var(--panel);--de-ink:var(--ink);--de-line-strong:var(--line);--de-accent:var(--brand);
+  --de-accent-hover:var(--brand2);--de-on-accent:#04120d;--de-accent-ink:var(--accent);--de-focus:var(--accent);--de-radius-lg:var(--radius);
+  --de-shadow-md:var(--shadow)}
+.de-consent .de-btn{font-weight:800}

@@ -31,6 +31,11 @@ const GA_ID = "G-X0KL3ZL769";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* Cookie consent (public/consent.js): Google Consent Mode v2 with every signal denied by
+            default, banner with equal Accept/Reject, footer "Cookie settings". Runs before gtag.js. */}
+        <script src="/consent.js" data-policy="/privacy#cookies"></script>
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgLd())} />
         {GA_ID && (
