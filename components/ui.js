@@ -1,6 +1,6 @@
 import Link from "next/link";
 import SearchBox from "./SearchBox";
-import { BRAND, TAGLINE } from "../lib/site";
+import { BRAND, TAGLINE, OPERATOR } from "../lib/site";
 import { COUNTRIES, CATEGORY } from "../lib/data";
 
 export function Header({ country = "us" }) {
@@ -89,7 +89,7 @@ export function Footer({ country = "us" }) {
           {BRAND} is reader-supported. When you buy through links on our site we may earn a
           commission at no extra cost to you — see our{" "}
           <Link href="/affiliate-disclosure">affiliate disclosure</Link>. As an Amazon Associate we
-          earn from qualifying purchases. © {BRAND}, operated by Digital Edge Solutions.
+          earn from qualifying purchases. © {BRAND}, operated by {OPERATOR}.
         </p>
       </div>
     </footer>

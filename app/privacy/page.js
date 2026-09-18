@@ -1,5 +1,5 @@
 import { Header, Footer } from "../../components/ui";
-import { BRAND } from "../../lib/site";
+import { BRAND, OPERATOR, CONTACT_EMAIL } from "../../lib/site";
 
 export const metadata = {
   title: "Privacy Policy",
@@ -18,7 +18,12 @@ export default function Privacy() {
           <p className="sub">How we handle data when you use {BRAND}.</p>
         </section>
         <section className="section" style={{ paddingTop: 8, maxWidth: 720 }}>
-          <h2>What we collect</h2>
+          <h2>Who we are</h2>
+          <p className="lead">
+            {BRAND} is operated by {OPERATOR}, the data controller for personal data collected through
+            this site. Contact: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+          </p>
+          <h2 style={{ marginTop: 20 }}>What we collect</h2>
           <p className="lead">
             {BRAND} is an information and comparison site. We do not require you to create an account
             and we do not ask for personal information to browse. We collect only standard,

@@ -1,6 +1,6 @@
 import { Header, Footer } from "../../components/ui";
 import ContactForm from "../../components/ContactForm";
-import { BRAND } from "../../lib/site";
+import { BRAND, OPERATOR } from "../../lib/site";
 
 export const metadata = {
   title: "Contact",
@@ -25,7 +25,7 @@ export default function Contact() {
           <ContactForm />
           <p className="lead" style={{ marginTop: 18, maxWidth: 480 }}>
             For affiliate, partnership or press enquiries, use the form above and add “Partnerships”
-            to your message. {BRAND} is operated by Digital Edge Solutions.
+            to your message. {BRAND} is operated by {OPERATOR}.
           </p>
         </section>
       </main>
