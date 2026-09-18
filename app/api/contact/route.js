@@ -15,7 +15,8 @@ export async function POST(req) {
     }
     const res = await fetch(ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      // FormSubmit ties activation to the sending site; a server call has no Referer, so name ours.
+      headers: { "Content-Type": "application/json", Accept: "application/json", Origin: "https://www.partmojo.com", Referer: "https://www.partmojo.com/uk/contact" },
       body: JSON.stringify({
         _subject: "New PartMojo contact message",
         _template: "table",
